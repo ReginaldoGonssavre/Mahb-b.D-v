@@ -21,3 +21,16 @@ class PerfilSaude(BaseModel):
 class OptimizationRequest(BaseModel):
     problem: str
     constraints: List[str]
+
+class QuantumPlatform(BaseModel):
+    nome: str
+    tecnologia_qubit: str
+    qubits_fisicos: Optional[List[int]]
+    qubits_logicos: Optional[str]
+    gate_depth: Optional[int]
+    codificacao: str
+    temperatura: str
+    coerencia: Optional[str]
+    fidelidade: Optional[str]
+    ano_fundacao: int
+    ano_lancamento: Optional[int]

@@ -1,18 +1,22 @@
 """
 AigroQuantumSaaS - Backend principal (FastAPI)
 """
-import sys, logging, jwt
+import sys, logging, json
+from jose import jwt
 from datetime import datetime, timedelta
-from typing import Optional, List
+from typing import Optional, List, Annotated
 from fastapi import FastAPI, HTTPException, Depends, status, Request
 from fastapi.responses import JSONResponse
 from fastapi.security import OAuth2PasswordBearer
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, BaseSettings, constr
+from pydantic import BaseModel, constr
+from pydantic_settings import BaseSettings
+from pydantic.types import StringConstraints
 from sqlalchemy import create_engine, Column, Integer, String, Boolean, DateTime, Text
 from sqlalchemy.orm import sessionmaker, declarative_base, Session
 from passlib.hash import bcrypt
 from uuid import uuid4
+from backend_app_models_schemas import QuantumPlatform
 
 # Configuração
 class Settings(BaseSettings):
@@ -24,6 +28,7 @@ class Settings(BaseSettings):
     ALLOW_ORIGINS: str = "*"
     class Config:
         env_file = ".env"
+        extra = "ignore"
 settings = Settings()
 logging.basicConfig(stream=sys.stdout, level=settings.LOG_LEVEL, format="%(asctime)s | %(levelname)s | %(message)s")
 logger = logging.getLogger("aigroquantumsaas")
@@ -104,9 +109,12 @@ async def log_requests(request: Request, call_next):
         return JSONResponse(content={"error": "Internal server error"}, status_code=500)
 
 # Modelos Pydantic
+from typing import Annotated
+from pydantic import StringConstraints
+
 class UserCreate(BaseModel):
-    username: constr(min_length=3, max_length=30, regex="^[a-zA-Z0-9_.-]+$")
-    password: constr(min_length=6, max_length=64)
+    username: Annotated[str, StringConstraints(min_length=3, max_length=30, pattern="^[a-zA-Z0-9_.-]+$")]
+    password: Annotated[str, StringConstraints(min_length=6, max_length=64)]
 class UserLogin(BaseModel):
     username: str
     password: str
@@ -174,6 +182,18 @@ def get_me(user=Depends(get_current_user)):
 def get_quantum_jobs(user=Depends(get_current_user), db: Session = Depends(get_db)):
     jobs = db.query(QuantumJob).filter(QuantumJob.user_id == user.id).order_by(QuantumJob.created_at.desc()).all()
     return [QuantumJobResponse(id=j.id, prompt=j.prompt, backend=j.backend, result=j.result, created_at=j.created_at) for j in jobs]
+
+@app.get("/api/quantum/platforms", response_model=List[QuantumPlatform])
+def get_quantum_platforms():
+    try:
+        with open("/data/data/com.termux/files/home/quantum_platforms.json", "r") as f:
+            data = json.load(f)
+        return data
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="Dados de plataformas quânticas não encontrados")
+    except json.JSONDecodeError:
+        raise HTTPException(status_code=500, detail="Erro ao decodificar dados das plataformas quânticas")
+
 @app.get("/health")
 def health():
     return {"status": "ok"}
