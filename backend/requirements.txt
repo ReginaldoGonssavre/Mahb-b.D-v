@@ -11,3 +11,5 @@ pennylane
 httpx
 cryptography
 pytest
+black
+flake8
