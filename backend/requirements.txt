@@ -10,3 +10,4 @@ pennylane
 # Optional: for async tasks and security
 httpx
 cryptography
+pytest
