@@ -35,3 +35,9 @@ jobs:
     - name: Run tests
       run: pytest
       working-directory: ./backend
+    - name: Run Flake8
+      run: flake8 .
+      working-directory: ./backend
+    - name: Run Black
+      run: black --check .
+      working-directory: ./backend
