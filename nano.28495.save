@@ -1,0 +1,9 @@
+gemini cli
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_core.messages import HumanMessage
+
+llm = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key="sua-chave")
+
+response = llm.invoke("Explique em uma frase o que é LangChain")
+print(response.content)
+

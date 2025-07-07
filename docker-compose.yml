@@ -1,29 +1,12 @@
+
 version: '3.8'
 
 services:
-  backend:
-    build: ./backend
+  web:
+    image: nginx:latest
     ports:
-      - "5000:5000"
-    environment:
-      MONGO_URI: mongodb://mongo:27017/engenho
-      JWT_SECRET: secreto_engenho_2025
-    depends_on:
-      - mongo
-
-  frontend:
-    build: ./frontend
-    ports:
-      - "3000:3000"
-    depends_on:
-      - backend
-
-  mongo:
-    image: mongo:6.0
-    ports:
-      - "27017:27017"
+      - "8080:80"
     volumes:
-      - mongodb:/data/db
-
-volumes:
-  mongodb:
+      - ./index_Version4.html:/usr/share/nginx/html/index.html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./assets:/usr/share/nginx/html/assets

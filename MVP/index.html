@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AigroQuantumSaaS - Quantum Studio MVP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B1020;
+            color: #18e2fd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #13224c;
+            padding: 2.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 28rem;
+            text-align: center;
+        }
+        input[type="number"], button {
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #18e2fd;
+            background-color: #0B1020;
+            color: #18e2fd;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 1rem;
+        }
+        button {
+            background-color: #18e2fd;
+            color: #0B1020;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0ea5e9;
+        }
+        #result {
+            margin-top: 1.5rem;
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: #b0e2fd;
+            white-space: pre-wrap; /* Preserve whitespace and line breaks */
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-3xl font-bold mb-6">Quantum Studio MVP</h1>
+        <p class="text-md mb-6">Enter a number (0 or 1) to simulate a quantum operation (Deutsch-Jozsa).</p>
+        <input type="number" id="inputValue" placeholder="Enter 0 or 1" min="0" max="1">
+        <button onclick="runQuantumSimulation()">Run Quantum Simulation</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        async function runQuantumSimulation() {
+            const inputValue = document.getElementById('inputValue').value;
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Simulating...';
+
+            try {
+                const response = await fetch('/simulate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ value: parseInt(inputValue) }),
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                resultDiv.innerHTML = `<strong>Simulation Result:</strong><br>${data.result}`;
+            } catch (error) {
+                resultDiv.innerHTML = `<strong>Error:</strong> ${error.message}<br>Please ensure the backend server is running and accessible.`;
+                console.error('Error during quantum simulation:', error);
+            }
+        }
+    </script>
+</body>
+</html>
