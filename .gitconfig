@@ -1,5 +1,11 @@
 [user]
-	name = SerenaSolutions
-	email = serena.aigronovatech@gmail.com
+	name = ReginaldoGonssavre
+	email = raviapowersync@gmail.com
 [credential]
 	helper = store
+[credential "https://github.com"]
+	helper = 
+	helper = !/data/data/com.termux/files/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/data/data/com.termux/files/usr/bin/gh auth git-credential

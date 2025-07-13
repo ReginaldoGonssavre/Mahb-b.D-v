@@ -1,0 +1,159 @@
+.App {
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  background-color: #f4f4f4;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+  border-bottom: 5px solid #61dafb;
+}
+
+.App-main {
+  flex: 1;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+  width: 100%;
+}
+
+.auth-section,
+.features-section,
+.message-section,
+.monetization-section {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.auth-section {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.auth-form {
+  flex: 1;
+  min-width: 280px;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.auth-form h2,
+.features-section h2,
+.message-section h3,
+.monetization-section h2 {
+  color: #282c34;
+  margin-bottom: 15px;
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="password"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.auth-form button,
+.action-button,
+.donate-button,
+.sponsor-button {
+  background-color: #61dafb;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.auth-form button:hover,
+.action-button:hover,
+.donate-button:hover,
+.sponsor-button:hover {
+  background-color: #21a1f1;
+}
+
+.action-button {
+  margin: 0 10px;
+}
+
+.message-box,
+.user-data-box {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  padding: 15px;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  text-align: left;
+}
+
+.monetization-options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.donation-card,
+.sponsorship-card {
+  flex: 1;
+  min-width: 280px;
+  max-width: 45%;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.donate-button,
+.sponsor-button {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.placeholder-text {
+  font-size: 0.8em;
+  color: #888;
+  margin-top: 10px;
+}
+
+.App-footer {
+  background-color: #282c34;
+  color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .auth-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .auth-form,
+  .donation-card,
+  .sponsorship-card {
+    max-width: 90%;
+  }
+
+  .action-button {
+    margin: 10px 0;
+    width: 100%;
+  }
+}
