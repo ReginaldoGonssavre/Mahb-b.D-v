@@ -71,3 +71,8 @@ if __name__ == "__main__":
     print("\n--- Simulating Request to Trigger Web Search Tool ---")
     response5 = orchestrator.process_request("research_agent", "Pesquise sobre o que é Qiskit.")
     print(f"Agent Response 5 (Tool Use): {response5}")
+
+    # Simulate a request that should trigger the Qiskit tool
+    print("\n--- Simulating Request to Trigger Qiskit Tool ---")
+    response6 = orchestrator.process_request("quantum_agent", "Crie um circuito quântico com 2 qubits, um Hadamard no qubit 0 e um CNOT entre 0 e 1. Defina os observáveis 'IZ' e 'XX'.")
+    print(f"Agent Response 6 (Qiskit Tool): {response6}")

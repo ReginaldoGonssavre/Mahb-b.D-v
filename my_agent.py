@@ -127,3 +127,12 @@ if __name__ == "__main__":
     agent.act(f"Explicar o algoritmo de Deutsch-Jozsa para o usuário.", rag_context=context_2)
     if supabase_manager:
         agent.save_state_to_db()
+
+    # Simulate a request that should trigger the Qiskit tool
+    user_query_3 = "Crie um circuito quântico com 2 qubits, um Hadamard no qubit 0 e um CNOT entre 0 e 1. Defina os observáveis 'IZ' e 'XX'."
+    context_3 = agent.perceive(user_query_3)
+    print(f"\n--- Simulating Request to Trigger Qiskit Tool ---")
+    qiskit_response = agent.act(f"Criar e descrever o circuito quântico e observáveis solicitados.", rag_context=context_3)
+    print(f"Agent Response (Qiskit Tool): {qiskit_response}")
+    if supabase_manager:
+        agent.save_state_to_db()
