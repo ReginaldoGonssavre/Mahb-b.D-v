@@ -1,37 +1,40 @@
-# How to contribute
+# Contributing to Compass AI Platform
 
-We'd love to accept your patches and contributions to this project.
+We welcome contributions to the Compass AI Platform! To ensure a smooth and collaborative development process, please follow these guidelines.
 
-## Before you begin
+## How to Contribute
 
-### Review our community guidelines
+1.  **Fork the repository.**
+2.  **Create a new branch** for your feature or bug fix: `git checkout -b feature/your-feature-name` or `git checkout -b bugfix/issue-description`.
+3.  **Make your changes.** Ensure your code adheres to the project's coding style and conventions.
+4.  **Write tests** for your changes, if applicable.
+5.  **Run tests** to ensure everything is working as expected.
+6.  **Update documentation** as needed.
+7.  **Commit your changes** with a clear and concise commit message.
+8.  **Push your branch** to your forked repository.
+9.  **Create a Pull Request (PR)** to the `main` branch of the original repository.
 
-This project follows
-[Google's Open Source Community Guidelines](https://opensource.google/conduct/).
+## Code Style
 
-## Contribution process
+-   Follow existing code style and formatting.
+-   Use meaningful variable and function names.
+-   Add comments where necessary to explain complex logic.
 
-### Code reviews
+## Commit Messages
 
-All submissions, including submissions by project members, require review. We
-use GitHub pull requests for this purpose. Consult
-[GitHub Help](https://help.github.com/articles/about-pull-requests/) for more
-information on using pull requests.
+We follow the Conventional Commits specification. Please use a clear and descriptive commit message, e.g., `feat: add user authentication` or `fix: resolve login bug`.
 
-### Contributor Guide
+## Reporting Bugs
 
-You may follow these steps to contribute:
+If you find a bug, please open an issue on GitHub with the following information:
 
-1. **Fork the official repository.** This will create a copy of the official repository in your own account.
-2. **Sync the branches.** This will ensure that your copy of the repository is up-to-date with the latest changes from the official repository.
-3. **Work on your forked repository's feature branch.** This is where you will make your changes to the code.
-4. **Commit your updates on your forked repository's feature branch.** This will save your changes to your copy of the repository.
-5. **Submit a pull request to the official repository's main branch.** This will request that your changes be merged into the official repository.
-6. **Resolve any linting errors.** This will ensure that your changes are formatted correctly.
+-   A clear and concise description of the bug.
+-   Steps to reproduce the behavior.
+-   Expected behavior.
+-   Screenshots or error messages, if applicable.
 
-Here are some additional things to keep in mind during the process:
+## Feature Requests
 
-- **Test your changes.** Before you submit a pull request, make sure that your changes work as expected.
-- **Be patient.** It may take some time for your pull request to be reviewed and merged.
+If you have an idea for a new feature, please open an issue on GitHub to discuss it. This helps ensure that the feature aligns with the project's goals and avoids duplicate work.
 
-
+Thank you for contributing!

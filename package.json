@@ -1,22 +1,35 @@
 {
-  "name": "types",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "generate": "./node_modules/.bin/typescript-json-schema tsconfig.json \"*\" --defaultNumberType integer --required > ../specification/json/a2a.json",
-    "prettier": "prettier src/types.ts --write"
-  },
-  "author": "",
-  "description": "A2A Types",
+  "name": "compass-ai-frontend",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "i18next": "^25.2.1",
-    "react-i18next": "^15.5.3",
-    "react-markdown": "^10.1.0",
-    "react-router-dom": "^7.6.2",
-    "typescript-json-schema": "^0.65.1"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
   },
-  "devDependencies": {
-    "prettier": "^3.5.3",
-    "typescript": "^5.3.3"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

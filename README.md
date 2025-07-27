@@ -1,32 +1,46 @@
-# Simulação de Internet Quântica
+# Getting Started with Create React App
 
-Este projeto contém uma simulação conceitual de uma rede de Internet Quântica, demonstrando a criação de qubits, entrelaçamento e a aplicação de um protocolo de Distribuição de Chave Quântica (QKD). A simulação é inspirada em conceitos de projetos reais como o satélite Micius, a Quantum Internet Alliance e a Rede Rio Quântica no Brasil.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Conteúdo
+## Available Scripts
 
-- `quantum_internet_simulation.py`: O código Python da simulação.
-- `research_notes.md`: Notas detalhadas da pesquisa que embasaram a simulação.
+In the project directory, you can run:
 
-## Como Executar a Simulação
+### `npm start`
 
-1.  **Pré-requisitos:**
-    *   Python 3.x
-    *   Qiskit (instale via pip: `pip install qiskit`)
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-2.  **Execução:**
-    ```bash
-    python quantum_internet_simulation.py
-    ```
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-## Conceitos Demonstrados
+### `npm test`
 
-- **Qubit:** A unidade fundamental de informação quântica.
-- **Superposição:** A capacidade de um qubit de estar em múltiplos estados simultaneamente.
-- **Entrelaçamento:** Um fenômeno quântico onde o estado de um qubit está intrinsecamente ligado ao estado de outro, independentemente da distância.
-- **Distribuição de Chave Quântica (QKD):** Um método de comunicação segura que utiliza princípios da mecânica quântica para garantir a confidencialidade de uma chave criptográfica.
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## Inspirações
+### `npm run build`
 
-- **Satélite Micius:** Pioneiro na distribuição de chaves quânticas via satélite.
-- **Quantum Internet Alliance (QIA):** Iniciativa europeia para desenvolver a tecnologia da Internet Quântica.
-- **Rede Rio Quântica:** A primeira rede de comunicação quântica do Brasil, conectando instituições de pesquisa no Rio de Janeiro através de fibra óptica e laser.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
