@@ -1,0 +1,7 @@
+qiskit
+google-generativeai
+torch
+transformers
+pinecone-client
+supabase-py
+Flask

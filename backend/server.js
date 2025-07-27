@@ -78,6 +78,46 @@ app.post('/api/ia', protect, (req, res) => {
   });
 });
 
+// Gemini AI Integration Endpoint
+app.post('/api/gemini/chat', protect, (req, res) => {
+  const { prompt } = req.body;
+  console.log(`Gemini chat request received with prompt: ${prompt}`);
+
+  if (!prompt) {
+    return res.status(400).json({ error: 'Prompt is required.' });
+  }
+
+  const pythonProcess = spawn('python3', ['/data/data/com.termux/files/home/backend/gemini_service/gemini_service.py']);
+
+  pythonProcess.stdin.write(JSON.stringify({ prompt }));
+  pythonProcess.stdin.end();
+
+  let result = '';
+  let error = '';
+
+  pythonProcess.stdout.on('data', (data) => {
+    result += data.toString();
+  });
+
+  pythonProcess.stderr.on('data', (data) => {
+    error += data.toString();
+  });
+
+  pythonProcess.on('close', (code) => {
+    if (code !== 0) {
+      console.error(`Python script exited with code ${code}, error: ${error}`);
+      return res.status(500).json({ error: `Python script error: ${error}` });
+    }
+    try {
+      const jsonResult = JSON.parse(result);
+      res.json(jsonResult);
+    } catch (e) {
+      console.error('Failed to parse Python script output:', e, result);
+      res.status(500).json({ error: 'Failed to parse Python script output.' });
+    }
+  });
+});
+
 // --- New Sector-Specific Placeholder Endpoints ---
 
 // QuantumPredict Pro Endpoints
