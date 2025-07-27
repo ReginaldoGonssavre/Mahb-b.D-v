@@ -97,7 +97,7 @@ ipython_config.py
 Pipfile.lock
 Pipfile
 
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+# PEP 582; used by e.com/David-OConnor/pyflow
 __pypackages__/
 
 # Celery stuff
@@ -188,3 +188,47 @@ Thumbs.db
 .ssh/id_ed25519.pub
 .ssh/known_hosts
 .ssh/known_hosts.old
+
+# Embedded Git repositories and large project directories
+MAHBÛB.Dev/
+Maḥbūb_Platform/
+NeuraQuantNumm/
+babyagi/
+crewai/
+nanda-servers/
+pydantic-ai/
+quantum-nexus-agent-x/
+ragflow/
+ravian-quantum/
+NEURAQUANT/
+QAI_GEN/
+QuantumNexusAgentX/
+Qwen3-coder/
+ai_browser/
+backend/gemini_service/
+decisionhub_saas/
+ian_ai_server/
+mahbub_ai_system/
+quantum-agent-frontend/
+quantum_ai_agent/
+quantum_sensing_env/
+ravian_quantum_cirq/
+ravian_quantum_next/
+ravian_quantum_qpu/
+trae-agent/
+We/
+
+# Other untracked files/directories
+.android/
+.cargo/
+.config/capacitor/
+.config/create-next-app-nodejs/
+.gemini/oauth_creds.json
+.gradle/
+.local/
+.ngrok2/
+.npm/
+CompassAIPlatform.tar.gz
+supabase.tar.gz
+termux_backup.tar.gz
+frontend/start.sh
