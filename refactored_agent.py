@@ -9,6 +9,8 @@ from rag_module import RAGModule
 from gemini_integration import GeminiClient
 from supabase_manager import SupabaseManager
 from agent_tools import AgentTool, AVAILABLE_TOOLS # New imports
+from input_data import InputData # New import
+from memory_manager import MemoryManager # New import
 
 # 1. Conceitos de "Hands-On Machine Learning" (Scikit-Learn/Keras/TensorFlow)
 class MLComponent:
@@ -32,7 +34,7 @@ class IntelligentAgent(ABC):
     def __init__(self, agent_id: str, supabase_manager: Optional[SupabaseManager] = None, tools: Optional[Dict[str, AgentTool]] = None):
         self.agent_id = agent_id
         self.supabase_manager = supabase_manager
-        self.percepts = deque(maxlen=100)
+        self.memory_manager = MemoryManager(self.agent_id, supabase_manager) # Initialize MemoryManager
         self.tools = tools if tools is not None else {}
 
         # Initialize RAGModule
@@ -59,33 +61,18 @@ class IntelligentAgent(ABC):
 
     def load_state_from_db(self):
         if self.supabase_manager:
-            agent_data = self.supabase_manager.get_agent_definition(self.agent_id)
-            if agent_data:
-                # Example: Load percepts or other state from agent_data
-                # For now, just print a message
-                print(f"Agent {self.agent_id}: State loaded from DB.")
-                # self.percepts = deque(agent_data.get('percepts', []), maxlen=100)
-            else:
-                print(f"Agent {self.agent_id}: No existing state found in DB. Initializing new.")
+            self.memory_manager.load_from_db()
 
     def save_state_to_db(self):
         if self.supabase_manager:
-            # Example: Save percepts or other state to DB
-            # For now, just print a message
-            agent_state = {
-                "id": self.agent_id,
-                "percepts": list(self.percepts), # Convert deque to list for saving
-                # Add other relevant agent state here
-            }
-            self.supabase_manager.update_agent_definition(self.agent_id, agent_state)
-            print(f"Agent {self.agent_id}: State saved to DB.")
+            self.memory_manager.save_to_db()
 
     @abstractmethod
-    def perceive(self, environment):
+    def perceive(self, environment: InputData):
         # Example of how RAG module could be used:
-        if self.rag_module:
+        if self.rag_module and environment.text:
             # Assuming 'environment' contains a query string
-            query = str(environment) # Or extract a specific query from environment
+            query = environment.text # Or extract a specific query from environment
             results = self.rag_module.query_vectors(query)
             print(f"RAG search results for '{query}': {results}")
         pass

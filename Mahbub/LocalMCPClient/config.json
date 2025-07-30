@@ -1,0 +1,6 @@
+{
+  "mode": "offline",
+  "models": ["llama2", "phi3"],
+  "vectorstore": "sqlite",
+  "llm_host": "127.0.0.1:11434"
+}

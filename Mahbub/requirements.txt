@@ -1,0 +1,11 @@
+pandas
+numpy
+sdv
+chromadb
+langchain
+ollama
+openrouter-api
+speechrecognition
+openai-whisper
+mindsdb_sdk
+streamlit
