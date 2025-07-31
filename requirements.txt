@@ -1,7 +1,11 @@
-qiskit
 google-generativeai
-torch
-transformers
-pinecone-client
-supabase-py
-Flask
+fastapi
+uvicorn[standard]
+redis
+psycopg2-binary
+numpy
+pandas
+langchain
+crewai
+autogen
+lama-index
